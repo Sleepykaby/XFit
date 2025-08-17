@@ -1,5 +1,4 @@
-# XFit
-A program for Wide X-ray Angle Diffraction（WAXD）batch analysis
+# XFit: A program for Wide X-ray Angle Diffraction（WAXD）batch analysis
 ======================================================================================
 This repo is designed for researchers engaged in synchrotron X-ray characterization, enabling them to analyze and process their large amounts of data more efficiently. The current main supported functions are:
 
