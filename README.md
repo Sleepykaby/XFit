@@ -8,6 +8,7 @@ XFit 是一个面向 Windows 用户的 WAXD 数据批处理分析软件，支持
 - `legacy/`：旧版脚本兼容层，仅用于历史代码对照。
 - `scripts/`：Windows 安装辅助脚本。
 - `installer/`：Inno Setup 安装器脚本。
+- `file/`: 文件格式示例，支持'.dat'和'.cake'文件后缀。
 - `main.py`：图形界面启动入口。
 
 ## 1. 安装前准备
