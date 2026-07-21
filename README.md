@@ -1,4 +1,4 @@
-# XFit WAXD Batch Analyzer
+# XFit: a WAXD Batch Analyzer
 
 XFit 是一个面向 Windows 用户的 WAXD 数据批处理分析软件，支持结晶度、晶粒尺寸和取向因子分析。
 
