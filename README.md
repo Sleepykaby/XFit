@@ -210,36 +210,9 @@ xfit "D:\data\waxd" "D:\data\xfit_output" --mode crystallinity --start 5 --end 2
 xfit "D:\data\orientation" "D:\data\xfit_output" --mode orientation --start 0 --end 180
 ```
 
-## 7. 制作 Windows 安装包
+## 7. Windows 安装包
 
-安装 PyInstaller：
-
-```powershell
-python -m pip install pyinstaller
-```
-
-生成桌面程序目录：
-
-```powershell
-pyinstaller --noconsole --name XFit --collect-all scipy --collect-all matplotlib --collect-all PyQt6 main.py
-```
-
-生成后会得到：
-
-```text
-dist\XFit\XFit.exe
-```
-
-安装 Inno Setup 后打开：
-
-```text
-installer\xfit.iss
-```
-
-点击 `Compile`，生成：
-
-```text
-dist\installer\XFitSetup-2.0.0.exe
+release --> XFitSetup-v2.0.0.exe
 ```
 
 ## 8. 常见问题
