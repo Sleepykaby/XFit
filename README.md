@@ -212,6 +212,7 @@ xfit "D:\data\orientation" "D:\data\xfit_output" --mode orientation --start 0 --
 
 ## 7. Windows 安装包
 
+```powershell
 release --> XFitSetup-v2.0.0.exe
 ```
 
