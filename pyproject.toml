@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xfit-waxd"
+version = "2.0.0"
+description = "Desktop WAXD batch analyzer for crystallinity, grain size and orientation factor."
+readme = "README.md"
+requires-python = ">=3.10,<3.15"
+authors = [{ name = "XFit Team" }]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "PyQt6>=6.6",
+]
+
+[project.scripts]
+xfit = "xfit.cli:main"
+xfit-gui = "xfit.gui:main"
+
+[tool.setuptools]
+packages = ["xfit"]
