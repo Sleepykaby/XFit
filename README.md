@@ -1,6 +1,6 @@
 # XFit WAXD Batch Analyzer
 
-XFit 是一个面向 Windows 用户的 WAXD 数据批处理分析软件，支持结晶度、晶粒尺寸和取向因子分析。当前正式软件使用 PyQt6 构建向导式图形界面。
+XFit 是一个面向 Windows 用户的 WAXD 数据批处理分析软件，支持结晶度、晶粒尺寸和取向因子分析。
 
 ## 目录结构
 
@@ -91,7 +91,7 @@ python main.py
 xfit-gui
 ```
 
-## 4. PyQt 图形界面使用流程
+## 4. 图形界面使用流程
 
 ### 4.1 首页：选择路径和功能
 
