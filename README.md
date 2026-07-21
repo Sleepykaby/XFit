@@ -36,21 +36,16 @@ cd E:\MS_Data\4_Project\XFit
 python -m venv .venv
 ```
 
-或使用 conda 创建：
-
-```powershell
-conda create -n venv python=3.10
-```
-
 激活虚拟环境：
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-或者使用 conda 激活
+或使用 conda 创建并激活环境：
 
 ```powershell
+conda create -n venv python=3.10
 conda activate venv
 ```
 
