@@ -218,7 +218,7 @@ xfit "D:\data\orientation" "D:\data\xfit_output" --mode orientation --start 0 --
 ```
 
 ## 7. Windows 安装包
-我们已经在 Releases 的 XFit 内发行了 XFitSetup-v2.0.0.exe，可下载后进行安装，目前仅在 windows 系统内测试。
+- 我们已经在 Releases 的 XFit 内发行了 XFitSetup-v2.0.0.exe，可下载后进行安装，目前仅在 win 11 系统内进行了测试。
 
 ## 8. 常见问题
 
