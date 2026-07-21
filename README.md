@@ -27,7 +27,7 @@ python --version
 进入项目目录：
 
 ```powershell
-Set-Location E:\MS_Data\4_Project\XFit
+cd E:\MS_Data\4_Project\XFit
 ```
 
 创建虚拟环境：
@@ -36,10 +36,22 @@ Set-Location E:\MS_Data\4_Project\XFit
 python -m venv .venv
 ```
 
+或使用 conda 创建：
+
+```powershell
+conda create -n venv python=3.10
+```
+
 激活虚拟环境：
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
+```
+
+或者使用 conda 激活
+
+```powershell
+conda activate venv
 ```
 
 如果提示执行策略限制，先运行：
