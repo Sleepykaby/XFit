@@ -106,20 +106,28 @@ class PlotPanel(QWidget):
         x_label="q (nm^-1)",
         markers=(),
         amorphous_peaks=(),
+        comparison_curve=None,
         show_legend=False,
     ):
         self.axis.clear()
         x_array = np.asarray(x_values, dtype=float)
         y_array = np.asarray(y_values, dtype=float)
+        if comparison_curve is not None:
+            comparison_x, comparison_y, comparison_label = comparison_curve
+            comparison_x = np.asarray(comparison_x, dtype=float)
+            comparison_y = np.asarray(comparison_y, dtype=float)
+            if comparison_x.size and comparison_y.size:
+                self.axis.plot(comparison_x, comparison_y, color="#98A2B3", linewidth=1.1, alpha=0.9, label=comparison_label)
         if x_array.size and y_array.size:
-            self.axis.plot(x_array, y_array, color="#175CD3", linewidth=1.5, label="data")
+            label = "校准后" if comparison_curve is not None else "data"
+            self.axis.plot(x_array, y_array, color="#175CD3", linewidth=1.5, label=label)
         for index in markers or ():
             if 0 <= index < len(x_array):
                 self.axis.scatter(x_array[index], y_array[index], color="#D92D20", s=48, zorder=4)
         for peak_index, peak in enumerate(amorphous_peaks or (), start=1):
             component = gaussian(x_array, peak.amplitude, peak.center, peak.width)
             self.axis.plot(x_array, component, "--", linewidth=1.1, label=f"amorphous {peak_index}")
-        if show_legend or amorphous_peaks:
+        if show_legend or amorphous_peaks or comparison_curve is not None:
             self.axis.legend(loc="upper right")
         self.axis.set_title(title, fontsize=12, pad=12)
         self.axis.set_xlabel(x_label)
@@ -528,7 +536,17 @@ class CalibrationPage(QWidget):
         if self.state.calibration_raw:
             self._configure_range_widgets(self.state.calibration_raw.x)
             if self.state.processed_y is not None and self.state.processed_x:
-                self.plot.plot_curve(self.state.processed_x, self.state.processed_y, "处理后的标定曲线", markers=self.state.baseline_indices or ())
+                comparison_curve = None
+                if self.state.baseline_indices and self.state.calibration_sliced is not None:
+                    normalized = self._current_sliced_normalized()
+                    comparison_curve = (self.state.processed_x, normalized, "校准前")
+                self.plot.plot_curve(
+                    self.state.processed_x,
+                    self.state.processed_y,
+                    "处理后的标定曲线",
+                    markers=self.state.baseline_indices or (),
+                    comparison_curve=comparison_curve,
+                )
             else:
                 self.plot.plot_curve(self.state.calibration_raw.x, self.state.calibration_raw.y, "标定文件原始曲线")
 
@@ -603,7 +621,8 @@ class CalibrationPage(QWidget):
         self.state.end_value = end_value
         self.state.baseline_indices = baseline_indices
         title = "已基线校准的标定曲线" if baseline_indices else "已应用横坐标范围的标定曲线"
-        self.plot.plot_curve(series.x, corrected, title, markers=baseline_indices or ())
+        comparison_curve = (series.x, normalized, "校准前") if baseline_indices else None
+        self.plot.plot_curve(series.x, corrected, title, markers=baseline_indices or (), comparison_curve=comparison_curve)
 
     def reset_calibration(self):
         self.selected_baseline.clear()
